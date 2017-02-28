@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>PereiraJS: JS en Sistemas Distribuidos</title>
+    <link rel="shortcut icon" href="favicon.ico">
     <meta charset="utf-8">
     <style>
       @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
@@ -12,10 +13,16 @@
         font-family: 'Droid Serif';
         font-size: 50px;
       }
-      h1, h2, h3, li {
+      p { margin: 0.5em }
+      h1, h2, h3, li, table, p {
         font-family: 'Yanone Kaffeesatz';
         font-weight: normal;
       }
+      a { text-decoration: none; }
+      h1 { color: #e74c3c; }
+      h2, h3, h4, h5 { color: #d35400; }
+      li { text-align: left; }
+      i, em { color: #95a5a6 }
       .black {
         background: #000;
         color: #fff;
@@ -38,47 +45,93 @@
 
       ![](img/SD.png)
 
-      _Colección de computadoras separadas físicamente y conectadas entre sí por una red de comunicaciones; cada máquina posee sus componentes de hardware y software que se perciben como un solo sistema._
+      _"Colección de computadoras separadas físicamente y conectadas entre sí por una red de comunicaciones; cada máquina posee sus componentes de hardware y software que se perciben como un solo sistema"._
 
       ![](img/SD_ex.png)
 
       ---
-      class: center, middle
+      class: center
 
       # REPASO: Arquitectura tipo Cluster
 
       ![](img/cluster.png)
-      ---
 
+      ### Beneficios
+      * Alto rendimiento
+      * Alta disponibilidad
+      * Alta eficiencia
+
+      ---
+      class: center
       # Problema de Alejo con un SD
 
-      ---
 
-      # Soluciones que se tenian (1/)
+
+      ---
+      class: center
+      # Soluciones que se tenían (1/3)
 
       ## Clásica
+      ![](img/clasico.jpg)
 
-      * Shell
+      | ![](img/shell.png)   |      Shell/Terminal: <br /> La solución implica <br /> <ul><li>"Recorrer" cada máquina (sea física o remotamente)</li><li>Ejecutar instrucciones por máquina</li></ul> |
+      |----------|:-------------:|
+
 
       ---
-      # Soluciones que se tenian (2/)
+      class: center
+      # Soluciones que se tenían (1/3)
+
+      ## Clásica (Ayudas)
+      ### CSSH (Cluster SSH)
+      |  |  |
+      |----------|:-------------:|
+      |  | https://github.com/duncs/clusterssh |
+
+      ### Shells
+      |  |  |
+      |----------|:-------------:|
+      |  | http://www.zsh.org/ |
+      | ![](img/fish.png) | http://www.zsh.org/ |
+
+      ---
+      class: center
+      # Soluciones que se tenían (2/3)
       ## Shell Script
 
+      ![](img/clasico.jpg)
+
+      | ![](img/shell.png)   |      Shell Script: <br /> La solución implica <br /> <ul><li>Programar!!!</li><li>"Recorrer" cada máquina</li><li>Explorar errores</li><li>Tratar de "visualizar" salidas</li></ul>|
+      |----------|:-------------:|
+
+      ---
+      class: center
+      # Soluciones que se tenían (3/3)
+      ## Mejor solución: JS !!!
+      ### Qué se necesitaba?
+
+      1. Idea: Interfaz amigable con los usuarios del sistema
+      2. Dar ordenes al S.O. (Lo que comunmente se hace desde una Shell/Terminal)
+      3. Realizar conexión a diferentes componentes de nuestro sistema, y realizar en estos #2
+
+      |  |  |
+      |----------|:-------------:|
+      | ![](img/npm.png)   |       ![](img/github.jpg) |
+      | Node Package Manager | Github |
+      | https://www.npmjs.com/ | https://github.com |
+
       ---
 
       # Mejor solución: JS !!!
-
-      ---
-
-      # Mejor solución: JS !!!
+      1. Idea: Interfaz amigable con los usuarios del sistema. SOLUCIÓN: JS!!!
+      2. Dar ordenes al S.O. (Lo que comunmente se hace desde una Shell/Terminal)
       ## Child_Process
       ## ssh con JS
 
       ---
-      class: center, middle
+      class: center, middle, black
 
       # Trabajos futuros (?)
-
 
       ---
       class: center, middle, black
@@ -90,6 +143,7 @@
 
       # ¡Gracias!
 
+      ![](img/gracias.jpg)
 
 
     </textarea>
