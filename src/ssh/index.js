@@ -1,9 +1,10 @@
-var SSH = require('simple-ssh');
+const SSH = require('simple-ssh');
 
-var ssh = new SSH({
-  host: 'node04',
-  user: 'cluster',
-  pass: 'sudo'
+const ssh = new SSH({
+  host: 'lovelace.utp.edu.co',
+  port: 4000,
+  user: 'test',
+  pass: 'test'
 });
 
 ssh

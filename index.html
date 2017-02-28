@@ -14,7 +14,7 @@
         font-size: 50px;
       }
       p { margin: 0.5em }
-      h1, h2, h3, li, table, p {
+      h1, h2, h3, h4, h5, li, table, p {
         font-family: 'Yanone Kaffeesatz';
         font-weight: normal;
       }
@@ -27,7 +27,10 @@
         background: #000;
         color: #fff;
       }
-      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code, .remark-inline-code {
+        font-family: 'Ubuntu Mono';
+        text-align: left;
+      }
     </style>
   </head>
   <body>
@@ -91,7 +94,7 @@
       ### Shells
       |  |  |
       |----------|:-------------:|
-      |  | http://www.zsh.org/ |
+      | ![](img/zsh.png) | http://www.zsh.org/ |
       | ![](img/fish.png) | http://www.zsh.org/ |
 
       ---
@@ -121,13 +124,71 @@
       | https://www.npmjs.com/ | https://github.com |
 
       ---
-
+      class: center
       # Mejor solución: JS !!!
-      1. Idea: Interfaz amigable con los usuarios del sistema. SOLUCIÓN: JS!!!
-      2. Dar ordenes al S.O. (Lo que comunmente se hace desde una Shell/Terminal)
-      ## Child_Process
-      ## ssh con JS
+      _1. Idea: Interfaz amigable con los usuarios del sistema. SOLUCIÓN: JS!!!_
 
+      _2. Dar ordenes al S.O. (Lo que comunmente se hace desde una Shell/Terminal)_
+      ## Sub-Procesos
+
+      ### child_process
+      https://nodejs.org/api/child_process.html
+
+      _Creación asíncrona de procesos (A nivel de S.O.)_
+
+      #### Configuración
+      ```js
+      const child_process = require('child_process');
+      ```
+      ---
+      class: center
+      # Mejor solución: JS !!!
+      _3. Realizar conexión a diferentes componentes de nuestro sistema, y realizar en estos #2_
+      ## SSh con JS
+
+      ### simple-ssh
+      https://www.npmjs.com/package/simple-ssh
+
+      _"Un medio para facilitar la realización de comandos a través de SSH"_
+
+      #### Configuración de la conexión
+      ```js
+      // Cuenta de usuario test en el equipo local
+      const SSH = require('simple-ssh');
+
+      const ssh = new SSH({
+          host: 'localhost',
+          user: 'test',
+          pass: 'test123'
+      });
+      ```
+      ---
+      class: center
+
+      ### simple-ssh
+      https://www.npmjs.com/package/simple-ssh
+
+      ```js
+      const ssh = new SSH({
+        host: 'lovelace.utp.edu.co',
+        port: 4000,
+        user: 'test',
+        pass: 'test'
+      });
+      ```
+      #### Ejecución de comandos
+      ```js
+      ssh
+        .exec('cat /etc/passwd', {
+          out: function(stdout) {
+            console.log(stdout);
+          },
+          err: function(stderr) {
+            console.log(stderr); // this-does-not-exist: command not found
+          }
+        })
+        .start();
+      ```
       ---
       class: center, middle, black
 
@@ -144,7 +205,6 @@
       # ¡Gracias!
 
       ![](img/gracias.jpg)
-
 
     </textarea>
     <script src="js/remark-latest.min.js">
