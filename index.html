@@ -14,6 +14,7 @@
         font-size: 50px;
       }
       p { margin: 0.5em }
+      li, p, em, th { font-size: 30px; }
       h1, h2, h3, h4, h5, li, table, p {
         font-family: 'Yanone Kaffeesatz';
         font-weight: normal;
@@ -57,18 +58,24 @@
 
       # REPASO: Arquitectura tipo Cluster
 
-      ![](img/cluster.png)
+      | ![](img/cluster.png)   | <h3>Características</h3><ul><li>Modelo "Maestro/Esclavo" </li><li>Varias máquinas</li><li>Conexión LAN</li><ul><li>SSH: Protocolo, intérprete de órdenes seguro </li></ul><li>Transparencia (?)</li></ul> |
+      |----------|:-------------:|
 
-      ### Beneficios
-      * Alto rendimiento
-      * Alta disponibilidad
-      * Alta eficiencia
+      |  |  |
+      |----------|:-------------:|
+      | <h3>Beneficios</h3><ul><li>Alto rendimiento</li><li>Alta disponibilidad</li><li>Alta eficiencia</li> | ![](img/homer.jpg) |
+
 
       ---
       class: center
       # Problema de Alejo con un SD
 
+      ## * Crear usuarios en el sistema *
 
+      | ¿Qué implica? |  Cómo el usuario debe existir homogeneamente en todas las máquinas: <br /><ul><li>"Recorrer" cada máquina (sea física o remotamente)</li><li>Ejecutar instrucciones por máquina</li></ul> |
+      |----------|:-------------:|
+
+      ![](img/pensar.jpg)
 
       ---
       class: center
@@ -95,7 +102,7 @@
       |  |  |
       |----------|:-------------:|
       | ![](img/zsh.png) | http://www.zsh.org/ |
-      | ![](img/fish.png) | http://www.zsh.org/ |
+      | ![](img/fish.png) | https://fishshell.com/ |
 
       ---
       class: center
@@ -110,7 +117,7 @@
       ---
       class: center
       # Soluciones que se tenían (3/3)
-      ## Mejor solución: JS !!!
+      ## Mejor solución: JS ?
       ### Qué se necesitaba?
 
       1. Idea: Interfaz amigable con los usuarios del sistema
@@ -119,7 +126,7 @@
 
       |  |  |
       |----------|:-------------:|
-      | ![](img/npm.png)   |       ![](img/github.jpg) |
+      | ![](img/npm.png) | ![](img/github.jpg) |
       | Node Package Manager | Github |
       | https://www.npmjs.com/ | https://github.com |
 
@@ -141,6 +148,21 @@
       const child_process = require('child_process');
       ```
       ---
+      class: center, middle
+
+      ### child_process
+      https://nodejs.org/api/child_process.html
+
+      #### Ejecuación de comandos
+
+      ```js
+      child_process.exec('cat /etc/passwd', function(err, stdout, stdin) {
+        if (err) console.log(err);
+        else if (stdout) console.log(stdout);
+        else if (stdin) console.log(stdin);
+      });
+      ```
+      ---
       class: center
       # Mejor solución: JS !!!
       _3. Realizar conexión a diferentes componentes de nuestro sistema, y realizar en estos #2_
@@ -155,18 +177,20 @@
       ```js
       // Cuenta de usuario test en el equipo local
       const SSH = require('simple-ssh');
+      ```
+      ---
+      class: center, middle
 
+      ### simple-ssh
+      https://www.npmjs.com/package/simple-ssh
+
+      ```js
       const ssh = new SSH({
           host: 'localhost',
           user: 'test',
           pass: 'test123'
       });
       ```
-      ---
-      class: center
-
-      ### simple-ssh
-      https://www.npmjs.com/package/simple-ssh
 
       ```js
       const ssh = new SSH({
@@ -176,6 +200,9 @@
         pass: 'test'
       });
       ```
+      ---
+      class: center, middle
+
       #### Ejecución de comandos
       ```js
       ssh
@@ -190,15 +217,36 @@
         .start();
       ```
       ---
-      class: center, middle, black
+      class: center, middle
 
       # Trabajos futuros (?)
+      ![](img/homero.jpg)
+
+      ---
+      class: center
+
+      # Monitor de Sistema
+
+      ![](img/ganglia.png)
+
+      http://ganglia.github.io/
 
       ---
       class: center, middle, black
 
       # P U B L I C I D A D
 
+      ---
+      class: center, middle
+
+      # Cluster Lovelace
+
+      ![](img/lovelace.png)
+
+      ### Contacto:
+      * Web: _lovelace.utp.edu.co_
+      * Alejandro E. Rendon: _alejorendon@utp.edu.co_
+      * Ing. John Osorio: _john@sirius.utp.edu.co_
       ---
       class: center, middle
 
